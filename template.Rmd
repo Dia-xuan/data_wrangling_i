@@ -19,3 +19,41 @@ length(samp)
 
 I can take the mean of the sample, too!
 The mean is `r mean(samp)`.
+
+```{r}
+library(tidyverse)
+```
+Let's import a dataset.
+
+```{r}
+litters_df = 
+  read_csv("data_import_examples/FAS_litters.csv")
+```
+```{r}
+names(litters_df)
+```
+
+```{r}
+litters_df <- 
+  janitor::clean_names(litters_df)
+```
+
+```{r}
+litters_df
+```
+
+```{r}
+skimr::skim(litters_df)
+```
+
+## fix missingness
+
+```{r}
+litters_df <- 
+  read_csv("data_import_examples/FAS_litters.csv",na = c("NA",".",""))
+```
+```{r}
+pups_df <- 
+  read_csv("data_import_examples/FAS_pups.csv",skip = 3,na = c("NA",".",""))
+```
+
