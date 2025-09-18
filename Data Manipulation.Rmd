@@ -1,0 +1,26 @@
+---
+title: "Data Manipulation"
+author: "Yaxuan Deng"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+```
+
+Let's import the datasets
+
+```{r}
+litters_df <- 
+  read_csv("data_import_examples/FAS_litters.csv",na=c("NA",".",""))
+litters_df <- 
+  janitor::clean_names(litters_df)
+
+pups_df <- 
+  read_csv("data_import_examples/FAS_pups.csv",skip = 3,na = c("NA",".",""))
+pups_df <- 
+  janitor::clean_names(pups_df)
+```
+
+new rmd for data manipulation
