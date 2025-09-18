@@ -116,3 +116,25 @@ drop_na(litters_df,gd0_weight)
 filter(pups_df,sex == 1)
 ```
 
+
+## mutate
+
+use mutate() to create or modify variables
+
+```{r}
+mutate(
+  litters_df,
+  wt_gain = gd18_weight - gd0_weight,
+  group = str_to_lower(group)
+)
+```
+
+## arrange
+
+it arranges things
+
+```{r}
+arrange(litters_df,pups_born_alive)
+arrange(litters_df,group,pups_born_alive)
+```
+
