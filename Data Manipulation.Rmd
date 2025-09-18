@@ -138,3 +138,39 @@ arrange(litters_df,pups_born_alive)
 arrange(litters_df,group,pups_born_alive)
 ```
 
+## pipes
+
+a bad way to so things
+
+```{r}
+litters_df <- 
+  read_csv("data_import_examples/FAS_litters.csv",na=c("NA",".",""))
+litters_df <- 
+  janitor::clean_names(litters_df)
+
+litters_df2 <- select(litters_df,group,litter_number,starts_with("gd"))
+
+litters_df3 <- drop_na(litters_df)
+
+litters_df4 <- mutate(
+  litters_df,
+  wt_gain = gd18_weight - gd0_weight
+)
+
+# 4 is actually what I'm interested in
+```
+
+instead, use pip to avoid all these
+command+shift+m
+
+```{r}
+litters_df <- 
+  read_csv("data_import_examples/FAS_litters.csv",na=c("NA",".","")) %>% 
+  janitor::clean_names() %>% 
+  select(,group,litter_number,starts_with("gd")) %>% 
+  drop_na() %>% 
+  mutate(
+    wt_gain = gd18_weight - gd0_weight
+  )
+```
+
